@@ -1,70 +1,29 @@
 #include <stdio.h>
+#include <math.h>
 #include <windows.h>
 
-double calculateArraySum(int array[], int size) {
-    double sum = 0;
-    for (int i = 0; i < size; i++) {
-        sum += array[i];
-    }
-    return sum;
-}
-
-int findMaxValue(int array[], int size) {
-    int max = array[0];
-    for (int i = 1; i < size; i++) {
-        if (array[i] > max) {
-            max = array[i];
-        }
-    }
-    return max;
-}
-
-int findMinValue(int array[], int size) {
-    int min = array[0];
-    for (int i = 1; i < size; i++) {
-        if (array[i] < min) {
-            min = array[i];
-        }
-    }
-    return min;
-}
-
-double calculateArrayProduct(int array[], int size) {
-    double product = 1;
-    for (int i = 0; i < size; i++) {
-        product *= array[i];
-    }
-    return product;
+void calculateParallelogramArea(double a, double b, double alpha) {
+    double alphaRadians = alpha * (3.14159265358979323846 / 180.0);
+    double area = a * b * sin(alphaRadians);
+    printf("Площа паралелограма: %.2f\n", area);
 }
 
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    int size;
+    double sideA, sideB, angleAlpha;
 
-    printf("Введіть розмір масиву: ");
-    scanf_s("%d", &size);
+    printf("Введіть довжину сторони a: ");
+    scanf_s("%lf", &sideA);
 
-    int array[100];
+    printf("Введіть довжину сторони b: ");
+    scanf_s("%lf", &sideB);
 
-    printf("Введіть елементи масиву:\n");
-    for (int i = 0; i < size; i++) {
-        printf("Елемент %d: ", i + 1);
-        scanf_s("%d", &array[i]);
-    }
+    printf("Введіть величину кута alpha в градусах: ");
+    scanf_s("%lf", &angleAlpha);
 
-    double sum = calculateArraySum(array, size);
-    printf("Сума елементів масиву: %.2f\n", sum);
-
-    int maxValue = findMaxValue(array, size);
-    printf("Максимальне значення елемента масиву: %d\n", maxValue);
-
-    int minValue = findMinValue(array, size);
-    printf("Мінімальне значення елемента масиву: %d\n", minValue);
-
-    double product = calculateArrayProduct(array, size);
-    printf("Добуток елементів масиву: %.2f\n", product);
+    calculateParallelogramArea(sideA, sideB, angleAlpha);
 
     return 0;
 }
